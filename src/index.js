@@ -24,7 +24,7 @@ module.exports = function(credentials){
       .digest('hex');
 
     return jwt.sign(payload,
-      new Buffer(credentials.clientSecret, 'base64').toString('binary'), {
+      new Buffer(credentials.clientSecret, 'base64'), {
         expiresIn: lifetimeInSeconds,
         audience: credentials.clientId,
         noTimestamp: true // we generate it before for the `jti`
